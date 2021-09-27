@@ -128,7 +128,7 @@ se o nome está contido na lista.
 
 */
 
-import estaContido from "./tarefa9.mjs";
+import estaContido from "./tarefa9.js";
 /* const estaContido = require("./desafio9.js") */
 
 
