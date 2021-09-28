@@ -1,8 +1,8 @@
 {
-  "name": "sem_autor",
+  "name": "sem_titulo",
   "version": "1.0.0",
-  "description": "Projeto do bytebank para seus clientes",
-  "main": "main.js",
+  "description": "Trabalhando com o Faker.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
