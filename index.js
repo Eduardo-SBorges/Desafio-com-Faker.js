@@ -13,7 +13,7 @@ Mockar a criação dos objetos respeitando os seguintes requisitos:
 
 const clientes = new Array
 
-export default function gerarClientes() {
+function gerarClientes() {
 
     for (let i = 0; i < 5; i++) {
 
@@ -34,7 +34,7 @@ export default function gerarClientes() {
     }
     return clientes
 }
-gerarClientes()
+
 
 
 /* --------- Função que cria o template dos Títulos das Tarefas --------- */
@@ -228,7 +228,7 @@ function estaContido(nome) {
 
 /* --------- Ativações da Funções de Cada Tarefa --------- */
 
-
+gerarClientes() ////////////////// TAREFA 1
 filtrar('A') ///////////////////// TAREFA 2
 listar() ///////////////////////// TAREFA 3
 totalRegistros() ///////////////// TAREFA 4
