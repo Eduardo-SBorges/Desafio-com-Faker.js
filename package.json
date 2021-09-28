@@ -1,0 +1,23 @@
+{
+  "name": "desafio_com_faker",
+  "version": "1.0.0",
+  "description": "desafio_com_faker.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eduardo-SBorges/Desafio-com-Faker.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eduardo-SBorges/Desafio-com-Faker.js/issues"
+  },
+  "homepage": "https://github.com/Eduardo-SBorges/Desafio-com-Faker.js#readme",
+  "dependencies": {
+    "faker": "^5.5.3"
+  }
+}
