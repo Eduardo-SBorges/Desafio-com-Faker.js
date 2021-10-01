@@ -20,15 +20,15 @@ function gerarClientes() {
         const nome = faker.name.findName()
         const nascimento = faker.date.past(109, 2019).getFullYear()
         const genero = faker.name.gender(nome)
-        const ultimaCompra = faker.date.recent(2021).getFullYear()
-        const valorCompra = faker.finance.amount()
+        const ultimaCompra = `${faker.date.recent(2020).getDay() + 1}/${faker.date.past(2020).getMonth() + 1}/${faker.date.recent(2020).getFullYear()}`
+        const totalCompras = Math.floor(Math.random() * (30 - 1) + 1)
 
         const cliente = {
             nome,
             nascimento,
             genero,
             ultimaCompra,
-            valorCompra
+            totalCompras
         }
         clientes.push(cliente)
     }
@@ -69,8 +69,6 @@ caractere.
  
 */
 
-
-
 function filtrar(letra) {
 
     clientes.filter((cliente) => cliente.nome.slice(0, 1) == letra)
@@ -81,7 +79,30 @@ function filtrar(letra) {
     registros de clientes cujo o nome inicia com o
     caractere.`)
 
-    console.log(clientes.filter((cliente) => cliente.nome.slice(0, 1) == letra))
+    const teste = []
+
+    clientes.filter((cliente) => {
+        const arrCliente = cliente.nome.slice(0, 1) == letra
+
+        if (arrCliente) {
+            let obj = {
+                nome: cliente.nome,
+                nascimento: cliente.nascimento,
+                genero: cliente.genero,
+                ultimaCompra: cliente.ultimaCompra,
+                totalCompras: cliente.totalCompras
+            }
+            teste.push(obj)
+        }
+    }
+
+    )
+    if (teste == '') {
+        console.log('Não há clientes com esta inicial.')
+    }
+    else {
+        console.log(teste)
+    }
 }
 
 /* TAREFA 3
@@ -115,7 +136,7 @@ function totalRegistros() {
     encontrados.`)
 
 
-    console.log(`O total de registros encontrados até o momento são ${clientes.length}`)
+    console.log(`O total de registros encontrados até o momento são ${clientes.length}.`)
 }
 
 /* TAREFA 5
@@ -202,8 +223,6 @@ se o nome está contido na lista.
 
 function estaContido(nome) {
 
-    console.log("clientes")
-
     const arr = []
 
     clientes.filter((cliente) => cliente.nome.split(' '))
@@ -225,6 +244,73 @@ function estaContido(nome) {
     }
 }
 
+/* TAREFA 10
+
+Implemente uma função que retorna o total de vendas
+realizadas somando as compras de todos os clientes.
+
+*/
+
+function totalCompras() {
+
+    const compras = new Array()
+    clientes.forEach((cliente) => compras.push(cliente.totalCompras))
+
+    titulo(10) // Invoca o template de título
+    descricao(`Implemente uma função que retorna o total de vendas
+    realizadas somando as compras de todos os clientes.`)
+
+    console.log(compras.reduce((a, b) => a + b) + ' compras totais.')
+}
+
+/* TAREFA 11
+
+Implemente uma função que retorne os dados dos
+clientes que não compram há mais de 1 ano.
+
+*/
+
+function naoCompram1Ano() {
+
+    titulo(11) // Invoca o template de título
+    descricao(`Implemente uma função que retorne os dados dos
+    clientes que não compram há mais de 1 ano.`)
+
+    clientes.map((cliente) => {
+        const ultimaCompraEmMilis = new Date(`${cliente.ultimaCompra[2]}/${cliente.ultimaCompra[1]}/${cliente.ultimaCompra[0]}`).getTime()
+
+        const umAnoEmMilis = 1000 * 60 * 60 * 24 * 365;
+
+        const diferenca = new Date().getTime() - ultimaCompraEmMilis
+
+        if (diferenca > umAnoEmMilis) console.log(cliente)
+
+    })
+
+}
+
+/* TAREFA 12
+
+Implemente uma função que retorne os dados dos
+clientes que não compram há mais de 1 ano.
+
+*/
+
+function maisQue15Compras() {
+
+    titulo(12) // Invoca o template de título
+    descricao(`Implemente uma função que retorne os dados dos
+    clientes que já realizaram mais de 15 compras.`)
+
+    clientes.map((cliente) => {
+        const maisQue15 = cliente.totalCompras
+
+        if (15 < maisQue15) console.log(cliente)
+
+    })
+
+}
+
 
 /* --------- Ativações da Funções de Cada Tarefa --------- */
 
@@ -237,6 +323,8 @@ primeiroNome() /////////////////// TAREFA 6
 filtrarPrimeiroNome('A') ///////// TAREFA 7
 maiores() //////////////////////// TAREFA 8
 estaContido("Dr.") /////////////// TAREFA 9
-
+totalCompras() /////////////////// TAREFA 10
+naoCompram1Ano() ///////////////// TAREFA 11
+maisQue15Compras() /////////////// TAREFA 12
 
 /* ------ Fim das Ativações da Funções de Cada Tarefa ------ */
